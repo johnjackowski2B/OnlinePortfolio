@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>John Jackowski — L&D Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f5f2ed;
+    --accent: #8b1a1a;
+    --muted: #6b6560;
+    --rule: #ccc8c0;
+    --card-bg: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    padding: 80px 60px 60px;
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .header-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 32px;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 6vw, 72px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .header-desc {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .contact-line {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .contact-line a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .contact-line a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* DIVIDER */
+  .divider {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .divider hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* SECTION */
+  section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 64px 60px;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* CASE STUDY GRID */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    padding: 36px 32px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover {
+    background: #faf9f7;
+  }
+
+  .project-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .project-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .project-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    flex: 1;
+    margin-bottom: 28px;
+  }
+
+  .project-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .stat-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    background: var(--paper);
+    color: var(--muted);
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .project-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .project-link::after {
+    content: '→';
+    transition: transform 0.2s;
+  }
+
+  .project-card:hover .project-link::after {
+    transform: translateX(4px);
+  }
+
+  /* RISE 360 CARD — full width */
+  .project-card.featured {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    gap: 48px;
+    align-items: flex-start;
+  }
+
+  .featured-left {
+    flex: 1;
+  }
+
+  .featured-right {
+    flex: 1;
+    padding-top: 4px;
+  }
+
+  .featured-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .about-block h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .about-block p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* SKILLS LIST */
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .skill-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 5px 10px;
+    border-radius: 2px;
+  }
+
+  /* FOOTER */
+  footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 60px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-top: 1px solid var(--rule);
+  }
+
+  footer span {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header { animation: fadeUp 0.7s ease both; }
+  section { animation: fadeUp 0.7s ease 0.15s both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 680px) {
+    header, section, .divider { padding-left: 28px; padding-right: 28px; }
+    .project-card.featured { flex-direction: column; gap: 24px; }
+    .about-grid { grid-template-columns: 1fr; }
+    footer { padding: 32px 28px 48px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-rule"></div>
+  <p class="eyebrow">Workforce Development &amp; Learning Design</p>
+  <h1>John<br><em>Jackowski</em></h1>
+  <p class="header-desc">I build workforce development programs from scratch — the strategy, the systems, the data infrastructure, and the learning experiences. Based in Baltimore, MD.</p>
+  <div class="contact-line">
+    <span>Baltimore, MD</span>
+    <a href="mailto:johnjackowski2@gmail.com">johnjackowski2@gmail.com</a>
+    <a href="tel:4438312845">443-831-2845</a>
+  </div>
+</header>
+
+<div class="divider"><hr></div>
+
+<section>
+  <p class="section-label">Case Studies</p>
+
+  <div class="projects-grid">
+
+    <!-- MDHCP -->
+    <a class="project-card" href="MDHCP_Case_Study.html" target="_blank">
+      <p class="project-tag">Certificate Program</p>
+      <h2 class="project-title">Certificate Program</h2>
+      <p class="project-subtitle">A federally funded university partnership connecting public sector employees to fully covered certificate credentials — designed and built from scratch.</p>
+      <div class="project-stats">
+        <span class="stat-pill">1,600+ enrolled</span>
+        <span class="stat-pill">Federally funded</span>
+        <span class="stat-pill">Free to employees</span>
+      </div>
+      <span class="project-link">View case study</span>
+    </a>
+
+    <!-- TASK -->
+    <a class="project-card" href="TASK_Case_Study.html" target="_blank">
+      <p class="project-tag">Learning Hub</p>
+      <h2 class="project-title">TASK</h2>
+      <p class="project-subtitle">A free, self-service competency assessment and resource matching engine built for a 10,000+ employee public health agency — repurposing REDCap as a dynamic workforce development hub.</p>
+      <div class="project-stats">
+        <span class="stat-pill">10,000+ employees</span>
+        <span class="stat-pill">537 competencies</span>
+        <span class="stat-pill">750+ result cards</span>
+      </div>
+      <span class="project-link">View case study</span>
+    </a>
+
+    <!-- PACE -->
+    <a class="project-card" href="PACE_Case_Study.html" target="_blank">
+      <p class="project-tag">Career Pathing</p>
+      <h2 class="project-title">PACE</h2>
+      <p class="project-subtitle">A custom-built career pathing tool mapping 1,668 job codes to a structured competency framework — giving every employee a personalized gap analysis and advancement pathway.</p>
+      <div class="project-stats">
+        <span class="stat-pill">1,668 job codes</span>
+        <span class="stat-pill">7 instruments</span>
+        <span class="stat-pill">Built solo</span>
+      </div>
+      <span class="project-link">View case study</span>
+    </a>
+
+    <!-- RISE 360 DEMO -->
+    <a class="project-card" href="https://johnjackowski2b.github.io/TaskDemo2/" target="_blank">
+      <p class="project-tag">eLearning Demo · Articulate Rise 360</p>
+      <h2 class="project-title">TASK Interactive Demo</h2>
+      <p class="project-subtitle">A branded Articulate Rise 360 module demonstrating the TASK competency assessment experience — built to show the user journey from self-assessment through personalized resource recommendations.</p>
+      <div class="project-stats">
+        <span class="stat-pill">Rise 360</span>
+        <span class="stat-pill">Live demo</span>
+        <span class="stat-pill">Interactive</span>
+      </div>
+      <span class="project-link">Launch demo</span>
+    </a>
+
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section>
+  <p class="section-label">Background</p>
+  <div class="about-grid">
+    <div class="about-block">
+      <h3>What I do</h3>
+      <p>I design and build workforce development programs — from needs analysis through data infrastructure, learning design, evaluation systems, and delivery. Every program in this portfolio was built from scratch, without a template, vendor, or precedent.</p>
+    </div>
+    <div class="about-block">
+      <h3>Where I come from</h3>
+      <p>29 years in K–12 education, including curriculum framework development across 78 Howard County schools and instructional coaching. Master's in Education from Boston University. Currently building workforce development programs for a large state public health agency.</p>
+    </div>
+    <div class="about-block">
+      <h3>Tools &amp; platforms</h3>
+      <div class="skills-list">
+        <span class="skill-tag">REDCap</span>
+        <span class="skill-tag">Articulate Rise 360</span>
+        <span class="skill-tag">Articulate Storyline</span>
+        <span class="skill-tag">Canvas LMS</span>
+        <span class="skill-tag">Smartsheet</span>
+        <span class="skill-tag">Google Workspace</span>
+        <span class="skill-tag">Microsoft 365</span>
+      </div>
+    </div>
+    <div class="about-block">
+      <h3>Areas of expertise</h3>
+      <div class="skills-list">
+        <span class="skill-tag">Workforce Development</span>
+        <span class="skill-tag">Instructional Design</span>
+        <span class="skill-tag">Program Architecture</span>
+        <span class="skill-tag">Competency Frameworks</span>
+        <span class="skill-tag">Data Systems</span>
+        <span class="skill-tag">Grant Management</span>
+        <span class="skill-tag">Career Pathing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>John Jackowski · Baltimore, MD</span>
+  <span>johnjackowski2@gmail.com · 443-831-2845</span>
+</footer>
+
+</body>
+</html>

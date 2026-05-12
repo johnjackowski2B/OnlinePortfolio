@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PACE — Portfolio Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f5f2ed;
+    --accent: #8b1a1a;
+    --muted: #6b6560;
+    --rule: #ccc8c0;
+    --light: #edeae4;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 60px 48px 80px;
+  }
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 56px;
+  }
+  .meta-cell {
+    background: var(--paper);
+    padding: 20px;
+  }
+  .meta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .meta-value {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 14px;
+    margin-top: 48px;
+  }
+  p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  blockquote {
+    border-left: 2px solid var(--accent);
+    margin: 32px 0;
+    padding: 16px 24px;
+    background: var(--light);
+  }
+  blockquote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.6;
+  }
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 32px 0;
+  }
+  .stat-cell {
+    background: var(--paper);
+    padding: 24px 16px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 32px 0;
+  }
+  .step-cell {
+    background: var(--paper);
+    padding: 20px 16px;
+  }
+  .step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .step-text {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+  ul {
+    margin: 16px 0 24px 0;
+    padding: 0;
+    list-style: none;
+  }
+  ul li {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    padding: 6px 0 6px 20px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+  }
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .skill-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 5px 12px;
+    background: white;
+  }
+  .footer-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 48px 0 20px;
+  }
+  .footer-line {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+  @media print {
+    body { padding: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<p class="eyebrow">Portfolio Case Study</p>
+<h1>PACE</h1>
+<p class="subtitle">Planning Advancement and Career Exploration — a custom-built career pathing tool designed to increase retention and advancement in a 10,000+ employee public health agency.</p>
+
+<div class="meta-grid">
+  <div class="meta-cell">
+    <p class="meta-label">Role</p>
+    <p class="meta-value">Sole Designer &amp; Architect</p>
+  </div>
+  <div class="meta-cell">
+    <p class="meta-label">Platform</p>
+    <p class="meta-value">REDCap</p>
+  </div>
+  <div class="meta-cell">
+    <p class="meta-label">Audience</p>
+    <p class="meta-value">10,000+ state agency employees</p>
+  </div>
+  <div class="meta-cell">
+    <p class="meta-label">Job Codes Mapped</p>
+    <p class="meta-value">1,668</p>
+  </div>
+  <div class="meta-cell">
+    <p class="meta-label">Cost to Employees</p>
+    <p class="meta-value">Free</p>
+  </div>
+</div>
+
+<p class="section-label">The Problem</p>
+<p>Large public sector organizations often struggle with employee retention not because employees are unhappy, but because they can't see a clear path forward. Without a structured tool to help employees understand where they are, where they could go, and what it takes to get there, advancement feels opaque — and talented employees leave.</p>
+<p>At a state public health agency with over 10,000 employees spanning hundreds of job classifications, there was no self-service tool to help employees explore career pathways, understand the competency requirements of roles they aspired to, or identify the specific gaps they needed to close to advance. PACE was built to change that.</p>
+
+<blockquote>
+  <p>"The goal was simple: give every employee a clear, personalized answer to the question — what does it take to get from where I am to where I want to be?"</p>
+</blockquote>
+
+<h2>The Solution</h2>
+<p>PACE (Planning Advancement and Career Exploration) is a custom-built career pathing tool developed entirely in REDCap. Employees enter their current job code, the system validates it and generates their competency profile, they select a target role to pursue, and PACE delivers a personalized gap analysis showing exactly what skills, abilities, and knowledge they need to develop to advance.</p>
+
+<div class="steps">
+  <div class="step-cell">
+    <p class="step-num">Step 01</p>
+    <p class="step-text">Enter current job code (6-digit validated)</p>
+  </div>
+  <div class="step-cell">
+    <p class="step-num">Step 02</p>
+    <p class="step-text">System generates current role competency profile</p>
+  </div>
+  <div class="step-cell">
+    <p class="step-num">Step 03</p>
+    <p class="step-text">Select a target role to pursue</p>
+  </div>
+  <div class="step-cell">
+    <p class="step-num">Step 04</p>
+    <p class="step-text">Receive personalized gap analysis and advancement pathway</p>
+  </div>
+</div>
+
+<h2>What Was Built</h2>
+
+<div class="stats-row">
+  <div class="stat-cell">
+    <p class="stat-num">7</p>
+    <p class="stat-label">REDCap Instruments</p>
+  </div>
+  <div class="stat-cell">
+    <p class="stat-num">1,668</p>
+    <p class="stat-label">Job Codes Mapped</p>
+  </div>
+  <div class="stat-cell">
+    <p class="stat-num">142</p>
+    <p class="stat-label">Fields in Data Dictionary</p>
+  </div>
+  <div class="stat-cell">
+    <p class="stat-num">1</p>
+    <p class="stat-label">Person, Built from Scratch</p>
+  </div>
+</div>
+
+<ul>
+  <li>Job entry instrument with 6-digit job code validation and real-time error handling</li>
+  <li>Job confirmation instrument with dropdown selection across all 1,668 job codes</li>
+  <li>Current role profile instrument mapping the employee's job to its KSA requirements</li>
+  <li>Target job selection and confirmation instruments with matching logic</li>
+  <li>Gap analysis instrument comparing current profile to target role and surfacing development priorities</li>
+  <li>All system logic, branching, validation, and UX copy designed and implemented by one person</li>
+</ul>
+
+<h2>The Design Challenge</h2>
+<p>PACE required solving a deceptively complex data problem: mapping 1,668 distinct job codes to a structured competency framework, then building a system that could take any two job codes — current role and target role — and automatically compute a meaningful, personalized gap analysis in real time within REDCap's survey framework.</p>
+<p>The job code validation logic alone required custom field design and branching logic to handle malformed entries, unrecognized codes, and mismatches between what employees typed and what they selected — all while maintaining a clean, accessible user experience for employees at every technical skill level.</p>
+
+<p class="section-label" style="margin-top:48px;">Skills Demonstrated</p>
+<div class="skills-grid">
+  <span class="skill-tag">Career Pathing Design</span>
+  <span class="skill-tag">REDCap Architecture</span>
+  <span class="skill-tag">Workforce Program Design</span>
+  <span class="skill-tag">Data Validation Logic</span>
+  <span class="skill-tag">Competency Framework Development</span>
+  <span class="skill-tag">UX Writing</span>
+  <span class="skill-tag">Organizational Development</span>
+  <span class="skill-tag">Employee Retention Strategy</span>
+  <span class="skill-tag">Solo Program Execution</span>
+  <span class="skill-tag">Data Management</span>
+</div>
+
+<hr class="footer-rule">
+<p class="footer-line">Portfolio case study — John Jackowski · Workforce Development &amp; L&amp;D · Baltimore, MD</p>
+
+</body>
+</html>
